@@ -8,3 +8,9 @@ node_modules
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+.npmrc
+/.idea
+.eslintignore
+.eslintrc.cjs
+package-lock.json
+TODO.md

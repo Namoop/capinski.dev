@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+    @apply text-3xl font-bold
+}
+
+h2 {
+    @apply text-2xl font-bold
+}
+
+h3 {
+    @apply text-xl font-bold
+}
+
+code {
+    @apply bg-gray-200 rounded-3xl p-5;
+    tab-size: 8;
+}
+
+@layer base {
+    .link {
+        @apply text-blue-700 active:text-emerald-600 hover:text-blue-900 visited:text-purple-600 hover:scale-125 transition-all
+    }
+
+    .button {
+        @apply bg-slate-200 p-1 rounded hover:bg-gray-300 m-4
+    }
+}
+

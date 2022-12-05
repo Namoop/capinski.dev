@@ -69,7 +69,8 @@ const total_badge_priority = badge_priorities.reduce((v, c) => v + c); //result 
 <structure lang="pug">
 	h2 Day 3
 	h3 Inputted Data
-	| {JSON.stringify(input, "", " ").substring(0, 500)}...
+	p.w-full
+		| {JSON.stringify(input, "", " ").substring(0, 500)}...
 	h3 Code
 	code {@html code}
 	h3 Result
@@ -78,5 +79,7 @@ const total_badge_priority = badge_priorities.reduce((v, c) => v + c); //result 
 </structure>
 
 <style>
-	/*  */
+	p {
+		overflow-wrap: break-word;
+	}
 </style>

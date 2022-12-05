@@ -1,7 +1,6 @@
 export const load = () => {
 	return {
-		input:
-			`JppMDcJPcQbqGqFb
+		input: `JppMDcJPcQbqGqFb
 ZStgnHtsSjGBhqFbBmsm
 djzzwgHHggdnfwjtMPDPMGpPlNfpLDll
 dRCtwtlCSttPtlNPNtgvPrDqmBsjGSpjBBsJsqqmrp
@@ -300,6 +299,6 @@ QzfJfnfsbsJHMnNmHhVpCZwSQSWqSqVQhS
 nJnczsHzNMmBJnbnbNwnfzJfcDTltllRTgPlFlgPrTDjPRGl
 ZLCGDvvJlvGChSPZWPSsZWdRRN
 rQccBwcccnHmQggnVLPLWpgVWPpWzSRs
-fmwTfTHnMBTfJDbfftJLvhlL`
-	}
-}
+fmwTfTHnMBTfJDbfftJLvhlL`,
+	};
+};

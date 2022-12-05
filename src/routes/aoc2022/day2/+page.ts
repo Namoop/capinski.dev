@@ -1,7 +1,6 @@
 export const load = () => {
 	return {
-		input:
-`C Z
+		input: `C Z
 C Z
 C Y
 C Z
@@ -2500,6 +2499,6 @@ A Y
 C Z
 A Y
 C Z
-A Y`
-	}
-}
+A Y`,
+	};
+};

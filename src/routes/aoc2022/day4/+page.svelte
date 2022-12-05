@@ -7,6 +7,7 @@
 	const result = input;
 </script>
 
+<!-- prettier-ignore -->
 <structure lang="pug">
 	h2 Day #
 	h3 Inputted Data

@@ -4,30 +4,33 @@
 
 	const input = data.input.split("\n");
 	const nonUnique = input
-		.map(a => [a.substring(0, a.length / 2), a.substring(a.length / 2)])
-		.map(a =>
+		.map((a) => [a.substring(0, a.length / 2), a.substring(a.length / 2)])
+		.map((a) =>
 			[...new Set(a[0])]
 				.concat([...new Set(a[1])])
 				.filter((e, index, arr) => arr.indexOf(e) !== index)
 				.join("")
-		)
-	const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	const priorities = nonUnique.map(a => alphabet.indexOf(a) + 1)
-	const total_priority = priorities.reduce((v, c) => v + c) // result 1
+		);
+	const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	const priorities = nonUnique.map((a) => alphabet.indexOf(a) + 1);
+	const total_priority = priorities.reduce((v, c) => v + c); // result 1
 
 	let groups = [];
 	for (let i = 0; i < input.length; i += 3)
-		groups.push([input[i], input[i + 1], input[i + 2]])
+		groups.push([input[i], input[i + 1], input[i + 2]]);
 	const group_badges = groups
 		// .map(a => a.join(""))
-		.map(a =>
+		.map((a) =>
 			[...new Set(a[0])]
 				.concat([...new Set(a[1])])
 				.concat([...new Set(a[2])])
-				.filter((e, index, arr) => arr.indexOf(e) !== index && arr.lastIndexOf(e) !== index)
+				.filter(
+					(e, index, arr) =>
+						arr.indexOf(e) !== index && arr.lastIndexOf(e) !== index
+				)
 				.join("")
-		)
-	const badge_priorities = group_badges.map(a => alphabet.indexOf(a) + 1)
+		);
+	const badge_priorities = group_badges.map((a) => alphabet.indexOf(a) + 1);
 	const total_badge_priority = badge_priorities.reduce((v, c) => v + c); //result 2
 
 	const result = total_badge_priority;
@@ -63,9 +66,12 @@ const group_badges = groups
 const badge_priorities = group_badges.map(a => alphabet.indexOf(a) + 1)
 const total_badge_priority = badge_priorities.reduce((v, c) => v + c); //result 2
 
-\tconst result = total_badge_priority;`.replaceAll("\n", "<br>").replaceAll("\t", "&nbsp&nbsp")
+\tconst result = total_badge_priority;`
+		.replaceAll("\n", "<br>")
+		.replaceAll("\t", "&nbsp&nbsp");
 </script>
 
+<!-- prettier-ignore -->
 <structure lang="pug">
 	h2 Day 3
 	h3 Inputted Data

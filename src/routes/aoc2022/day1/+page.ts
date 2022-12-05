@@ -1,7 +1,6 @@
 export const load = () => {
 	return {
-		input:
-`11223
+		input: `11223
 6323
 10725
 10761
@@ -2257,6 +2256,6 @@ export const load = () => {
 2772
 1427
 1930
-`
-    }
-}
+`,
+	};
+};

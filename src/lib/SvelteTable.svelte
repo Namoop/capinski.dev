@@ -18,4 +18,6 @@
 	});
 </script>
 
-<SvelteTable rows={data} {columns} classNameTable="text-center" />
+<div class="max-w-full">
+	<SvelteTable rows={data} {columns} classNameTable="text-center" />
+</div>

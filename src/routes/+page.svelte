@@ -36,43 +36,39 @@
 	].sort((a, b) => new Date("1 " + b.date) - new Date("1 " + a.date));
 	const display = {
 		link: (v) =>
-			`<a class="link" href="${v.link}">${
-				v.link.length > 30 ? v.link.substring(0, 30) + "..." : v.link
-			}</a>`,
+			`<a class="link" href="${v.link}">${v.link.substring(8, 38)}</a>`,
 	};
 </script>
 
 <!-- prettier-ignore -->
 <structure lang="pug">
-	br
 	h1 capinski.dev
 	h3 Info
-	p Theodore Capinski
-		span.visible(class="sm:collapse") {@html ""}
-		span.detail (he/him)
-	p Web developer
+	p.flex.flex-col.items-center(class="sm:flex-row")
+		| Theodore Capinski
+		span.detail(class="sm:inline") he/him
+	p.flex.flex-col.items-center(class="sm:flex-row")
+		| Web developer
 		br.visible(class="sm:invisible")
-		span.detail (full-stack)
-	p Currently employed at:
+		span.detail full-stack
+	p.flex.flex-col.items-center(class="sm:flex-row")
+		| Currently employed at:
 		br.visible(class="sm:invisible")
 		span.detail your mom's house
-	p Favorite color:
+	p.flex.flex-col.items-center(class="sm:flex-row")
+		| Favorite color:
 		br.visible(class="sm:invisible")
 		span.detail green
 	div.flex.justify-content.gap-8
-		a.icon.link(href="mailto:{monthlyEmail}")
+		a.w-16.link(href="mailto:{monthlyEmail}")
 			GoMail
-		a.icon.link(href="https://www.github.com/Namoop")
+		a.w-16.link(href="https://www.github.com/Namoop")
 			GoMarkGithub
 	h3 Projects
 	SvelteTable(data="{project_data}" display="{display}")
 </structure>
 
 <style>
-	.icon {
-		@apply w-16;
-	}
-
 	.detail {
 		@apply font-mono bg-gray-200 p-0.5 m-1 rounded;
 	}

@@ -26,13 +26,13 @@ tr {
 
 @layer base {
 	.content {
-		@apply w-screen p-5 max-w-prose flex flex-col min-h-screen items-center gap-5;
+		@apply w-screen p-5 max-w-prose flex flex-col min-h-screen items-center gap-5 mx-auto;
 		padding-top: 10vh;
 		padding-bottom: 10vh;
 	}
 
 	.link {
-		@apply text-blue-700 active:text-emerald-600 hover:text-blue-900 visited:text-purple-900 hover:scale-125 transition-all;
+		@apply text-blue-700 active:text-emerald-600 hover:text-blue-900 visited:text-purple-900 hover:scale-125 transition-all truncate;
 	}
 
 	.button {

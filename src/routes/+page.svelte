@@ -2,6 +2,7 @@
 	import SvelteTable from "$lib/SvelteTable.svelte";
 	import GoMarkGithub from "svelte-icons/go/GoMarkGithub.svelte";
 	import GoMail from "svelte-icons/go/GoMail.svelte";
+	import FaMastodon from "svelte-icons/fa/FaMastodon.svelte";
 
 	const monthlyEmail = import.meta.env[
 		"VITE_EMAIL_" + new Date().getMonth() + "_" + new Date().getFullYear()
@@ -60,6 +61,8 @@
 		br.visible(class="sm:invisible")
 		span.detail green
 	div.flex.justify-content.gap-8
+		a.w-16.link(href="https://mathstodon.xyz/@capinski")
+			FaMastodon
 		a.w-16.link(href="mailto:{monthlyEmail}")
 			GoMail
 		a.w-16.link(href="https://www.github.com/Namoop")

@@ -32,7 +32,8 @@ tr {
 	}
 
 	.link {
-		@apply text-blue-700 active:text-emerald-600 hover:text-blue-900 visited:text-purple-900 hover:scale-125 transition-all truncate;
+		@apply text-blue-800 active:text-emerald-600 hover:text-indigo-800 hover:scale-125 transition-all;
+		/* visited:text-purple-900 truncate */
 	}
 
 	.button {

@@ -34,6 +34,11 @@
 			name: "capinski.dev",
 			link: "https://capinski.dev",
 		},
+		{
+			date: "Dec 2022",
+			name: "Advent of Code 2022 Puzzles",
+			link: "https://www.capinski.dev/aoc2022",
+		},
 	].sort((a, b) => new Date("1 " + b.date) - new Date("1 " + a.date));
 	const display = {
 		link: (v) =>

@@ -24,6 +24,10 @@ tr {
 	border-top: 1px dotted black;
 }
 
+button {
+	@apply bg-slate-200 px-5 py-1 rounded hover:bg-gray-400 m-4 transition duration-300;
+}
+
 @layer base {
 	.content {
 		@apply w-screen p-5 max-w-prose flex flex-col min-h-screen items-center gap-5 mx-auto;
@@ -36,7 +40,4 @@ tr {
 		/* visited:text-purple-900 truncate */
 	}
 
-	.button {
-		@apply bg-slate-200 p-1 rounded hover:bg-gray-300 m-4;
-	}
 }

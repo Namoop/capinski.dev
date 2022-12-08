@@ -6,7 +6,7 @@
 <structure lang="pug">
 	p
 		| Look through how I solved this year's &nbsp
-		a.link(href="adventofcode.com") advent of code
+		a.link(href="https://adventofcode.com" target="_blank") advent of code
 		br
 		br
 		| Language: boring old slow Javascript.

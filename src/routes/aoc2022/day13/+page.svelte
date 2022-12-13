@@ -3,7 +3,7 @@
 	import { input, raw, visualmap } from "./input";
 
 	type Packet = (number | Packet)[];
-	const arr = raw.split("\r\n\r\n").map(
+	const arr = $input.map(
 		(c) => c.split("\r\n").map((a) => JSON.parse(a)) as Packet
 	);
 	const mishmash = raw
@@ -98,7 +98,7 @@ const result = 0;`.replaceAll("\n", "<br>").replaceAll("\t", "&nbsp&nbsp");
 <structure lang="pug">
 	h2 Day 13
 	h3 Inputted Data
-	p.break-all {JSON.stringify(input).substring(0,500)}...
+	p.break-all {JSON.stringify($input).substring(0,500)}...
 	h3 Code
 	code {@html code}
 	h3 Result

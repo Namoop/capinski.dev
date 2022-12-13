@@ -99,6 +99,23 @@
 	//	check for answer
 	//	add adjacent to array2
 	//shift arr2 down (clear arr1)
+
+	// type Pathfinder<T> = (
+	// 	grid: T[][],
+	// 	reachable: (node: T, target: T) => boolean,
+	// 	heuristic: "Manhattan" | "Euclidian" | "Chebyshev",
+	// ) => T[];
+
+	// function astar<T>(
+	// 	grid,
+	// 	reachable = (n, t) => t == true,
+	// 	heuristic = "Manhattan"
+	// ): Pathfinder<T> {
+	// 	//
+	// 	return grid[0];
+	// }
+
+	// astar([["hi", "hi", 1]], (v, c) => false);
 </script>
 
 <button on:click={() => run()}> click to run</button>

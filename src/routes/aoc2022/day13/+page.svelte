@@ -3,7 +3,7 @@
 	import { input, raw, visualmap } from "./input";
 
 	type Packet = (number | Packet)[];
-	const arr = $input.map(
+	const arr = raw.split("\r\n\r\n").map(
 		(c) => c.split("\r\n").map((a) => JSON.parse(a)) as Packet
 	);
 	const mishmash = raw

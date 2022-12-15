@@ -44,29 +44,37 @@
 		link: (v) =>
 			`<a class="link" href="${v.link}">${v.link.substring(8, 38)}</a>`,
 	};
+	const info = [
+		{
+			text: "Theodore Capinski",
+			detail: "he/him",
+		},
+		{
+			text: "Web Developer",
+			detail: "full-stack",
+		},
+		{
+			text: "Current employer:",
+			detail: "your mom",
+		},
+		{
+			text: "Favorite color:",
+			detail: "green",
+		}
+	]
 </script>
 
 <!-- prettier-ignore -->
 <structure lang="pug">
 	h1 capinski.dev
 	h3 Info
-	p.flex.flex-col.items-center(class="sm:flex-row")
-		| Theodore Capinski
-		span.detail(class="sm:inline") he/him
-	p.flex.flex-col.items-center(class="sm:flex-row")
-		| Web developer
-		br.visible(class="sm:invisible")
-		span.detail full-stack
-	p.flex.flex-col.items-center(class="sm:flex-row")
-		| Currently employed at:
-		br.visible(class="sm:invisible")
-		span.detail your mom's house
-	p.flex.flex-col.items-center(class="sm:flex-row")
-		| Favorite color:
-		br.visible(class="sm:invisible")
-		span.detail green
+	+each("info as a")
+		p.flex.flex-col.items-center(class="sm:flex-row")
+			| {a.text}
+			br.visible(class="sm:invisible")
+			span.detail {a.detail}
 	div.flex.justify-content.gap-8
-		a.w-16.link(href="https://mathstodon.xyz/@capinski")
+		a.w-16.link(href="https://mathstodon.xyz/@capinski" rel="me")
 			FaMastodon
 		a.w-16.link(href="mailto:{monthlyEmail}")
 			GoMail

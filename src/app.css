@@ -30,7 +30,7 @@ button {
 
 @layer base {
 	.content {
-		@apply w-screen p-5 max-w-prose flex flex-col min-h-screen items-center gap-5 mx-auto;
+		@apply max-w-prose min-h-screen  mx-auto;
 		padding-top: 10vh;
 		padding-bottom: 10vh;
 	}

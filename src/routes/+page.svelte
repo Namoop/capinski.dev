@@ -3,6 +3,7 @@
 	import GoMarkGithub from "svelte-icons/go/GoMarkGithub.svelte";
 	import GoMail from "svelte-icons/go/GoMail.svelte";
 	import FaMastodon from "svelte-icons/fa/FaMastodon.svelte";
+	import Signature from "$lib/Signature.svelte";
 
 	const monthlyEmail = import.meta.env[
 		"VITE_EMAIL_" + new Date().getMonth() + "_" + new Date().getFullYear()
@@ -59,38 +60,76 @@
 			detail: "full-stack",
 		},
 		{
-			text: "Current employer:",
+			text: "Current employer",
 			detail: "your mom",
 		},
 		{
-			text: "Favorite color:",
+			text: "Favorite color",
 			detail: "green",
 		}
 	]
 </script>
 
-<!-- prettier-ignore -->
-<structure lang="pug">
-	h1 capinski.dev
-	h3 Info
-	+each("info as a")
-		p.flex.flex-col.items-center(class="sm:flex-row")
-			| {a.text}
-			br.visible(class="sm:invisible")
-			span.detail {a.detail}
-	div.flex.justify-content.gap-8
-		a.w-16.link(href="https://mathstodon.xyz/@capinski" rel="me")
-			FaMastodon
-		a.w-16.link(href="mailto:{monthlyEmail}")
-			GoMail
-		a.w-16.link(href="https://www.github.com/Namoop")
-			GoMarkGithub
-	h3 Projects
-	SvelteTable(data="{project_data}" display="{display}")
-</structure>
+<main class="flex flex-col items-center gap-5 p-5 w-full">
+	<img src="/logo.svg" alt="logo" class="w-20" />
+
+	<h1>capinski.dev</h1>
+	<p>
+		&emsp;
+		Hi, I'm a UC Berkeley student studying math, physics, and history.
+		I'm also a web developer, and I like to make games and tools in my free time.
+		I started programming as a wee lad on Scratch, and I've been hooked ever since.
+
+		<br><br>&emsp;
+		Other than websites, I've worked with C++, Java/Kotlin, and Python, but
+		<a href="https://svelte.dev" class="link">Svelte</a>
+		is always the easiest to get ideas up and running
+		quickly&mdash;for the attention span of a goldfish, that's a big plus.
+		I'm currently working on polishing some of my older stuff
+		and/or figuring out how blogging works.
+		I'm always looking for new projects to
+		<span class="line-through">procrastinate quantum mechanics problem sets</span>
+		explore.
+
+		<br><br>&emsp;
+		Questions?
+		<span class="italic">why?</span>
+		Regardless, I can be reached at the social icons below!
+		Response time is between now and the end of the universe.
+	</p>
+
+	<Signature scale={0.2} />
+
+	<h3>Info</h3>
+	<div class="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-5">
+		{#each info as a}
+			<p class="grid grid-cols-1 sm:grid-cols-2 items-center text-center">
+				<span class="p-0.5">{a.text}</span>
+				<span>
+					<span class="font-mono bg-gray-200 p-0.5 rounded pt-1">{a.detail}</span>
+				</span>
+			</p>
+		{/each}
+	</div>
+
+	<br>
+
+	<div class="flex justify-content gap-8">
+		<a class="w-16 link" href="https://mathstodon.xyz/@capinski" rel="me">
+			<FaMastodon />
+		</a>
+		<a class="w-16 link" href={`mailto:theo@capinski.dev`}>
+			<GoMail />
+		</a>
+		<a class="w-16 link" href="https://www.github.com/Namoop">
+			<GoMarkGithub />
+		</a>
+	</div>
+
+
+	<h3>Projects</h3>
+	<SvelteTable data={project_data} display={display} />
+</main>
 
 <style>
-	.detail {
-		@apply font-mono bg-gray-200 p-0.5 m-1 rounded;
-	}
 </style>

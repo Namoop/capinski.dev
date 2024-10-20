@@ -4,11 +4,12 @@
 
 <main class="">
 	<svg
-		width={718 * scale}
+		width={735 * scale}
 		height={355 * scale}
 		viewBox="0 0 718 345"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
+		class="stroke-gray-600 dark:stroke-gray-300"
 	>
 		<path
 		id="signature"
@@ -20,9 +21,6 @@
 </main>
 
 <style>
-	svg {
-		stroke: #454545;
-	}
 	svg:hover {
 		stroke: deepskyblue;
 	}

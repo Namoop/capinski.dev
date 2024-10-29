@@ -2,7 +2,7 @@
 	let {scale = 0.5} = $props();
 </script>
 
-<main class="">
+<signature class="">
 	<svg
 		width={735 * scale}
 		height={355 * scale}
@@ -18,7 +18,7 @@
 			stroke-linecap="round"
 		/>
 	</svg>
-</main>
+</signature>
 
 <style>
 	svg:hover {

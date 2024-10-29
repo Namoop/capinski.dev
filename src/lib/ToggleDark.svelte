@@ -26,7 +26,7 @@
 	}
 </script>
 
-<main class="dark_mode_gradient fixed size-40 -top-16 -right-16 rounded-full flex"
+<darkbutton class="dark_mode_gradient fixed size-40 -top-16 -right-16 rounded-full flex"
 	  style="background: radial-gradient(circle at center, var(--gradient-full), 80%, var(--gradient-gone))">
 	<button hidden id="toggleDarkMode" onclick={toggleColorScheme} aria-labelledby="toggleLabel">
 	</button>
@@ -39,7 +39,7 @@
 		{/if}
 		<span class="sr-only">Toggle Dark Mode</span>
 	</label>
-</main>
+</darkbutton>
 
 <style>
 	@property --gradient-full {

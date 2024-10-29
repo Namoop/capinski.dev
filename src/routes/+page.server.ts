@@ -3,16 +3,19 @@
 import type { PageServerLoad } from './$types'
 import PocketBase from 'pocketbase'
 
-/** project type
- *
- * @param params
+/** A project type loaded from Pocketbase
+ * @prop id - unique project id
+ * @prop name - project name
+ * @prop built - date of first release
+ * @prop link - hosted url
+ * @prop preview - shortened preview url
  */
 export interface Project {
 	id: string;
 	name: string;
 	built: string;
 	link: string;
-	preview?: string;
+	preview: string;
 }
 
 export const load: PageServerLoad = async ({ params }) => {
@@ -31,7 +34,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	const projects = data.map(record => {
 		const { id, name, built, link, preview } = record;
 
-		return { id, name, built, link, preview: preview ? preview : undefined } as Project;
+		return { id, name, built, link, preview: preview ? preview : link.match(/https:\/\/(.*)\//)?.[1] } as Project;
 	})
 
 	return {

@@ -18,7 +18,7 @@ export interface Project {
 	preview: string;
 }
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, cookies }) => {
 	const pb = new PocketBase('https://pocketbase.capinski.dev');
 
 	const data = await pb.collection('capinski_projects').getFullList({
@@ -37,7 +37,12 @@ export const load: PageServerLoad = async ({ params }) => {
 		return { id, name, built, link, preview: preview ? preview : link.match(/https:\/\/(.*)\//)?.[1] } as Project;
 	})
 
+	// fetch dark mode preferences from cookies
+	let dark_mode = cookies.get('dark_mode') === 'true';
+	let last_preference = cookies.get('last_preference') === 'dark';
+
 	return {
 		projects,
+		dark: {dark_mode, last_preference},
 	}
 }

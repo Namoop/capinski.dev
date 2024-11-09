@@ -39,7 +39,7 @@ export const load: PageServerLoad = async ({ params, cookies }) => {
 
 	// fetch dark mode preferences from cookies
 	let dark_mode = cookies.get('dark_mode') === 'true';
-	let last_preference = cookies.get('last_preference') === 'dark';
+	let last_preference = cookies.get('last_preference') === "true";
 
 	return {
 		projects,

@@ -5,7 +5,6 @@
 
 	// import projects from pagedata
 	import type {PageData} from "./$types";
-	import TextEditor from "$lib/TextEditor.svelte";
 
 	let {data}: { data: PageData } = $props();
 	const {projects, dark: _dark} = data;

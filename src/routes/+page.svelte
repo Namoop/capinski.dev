@@ -1,12 +1,11 @@
 <script lang="ts">
-	import GoMarkGithub from "svelte-icons/go/GoMarkGithub.svelte";
-	import GoMail from "svelte-icons/go/GoMail.svelte";
-	import FaMastodon from "svelte-icons/fa/FaMastodon.svelte";
 	import Signature from "$lib/Signature.svelte";
 	import ToggleDark from "$lib/ToggleDark.svelte";
+	import Icon from '$lib/Icon.svelte';
 
 	// import projects from pagedata
 	import type {PageData} from "./$types";
+	import TextEditor from "$lib/TextEditor.svelte";
 
 	let {data}: { data: PageData } = $props();
 	const {projects, dark: _dark} = data;
@@ -71,9 +70,9 @@
 			<br>
 
 			<div class="flex gap-8 justify-content">
-				<a class="w-16 link" href="https://mathstodon.xyz/@capinski" rel="me"> <FaMastodon/> </a>
-				<a class="w-16 link" href={`mailto:theo@capinski.dev`}> <GoMail/> </a>
-				<a class="w-16 link" href="https://www.github.com/Namoop"> <GoMarkGithub/> </a>
+				<a class="text-6xl link" href="https://mathstodon.xyz/@capinski" rel="me"> <Icon icon="mastodon"/> </a>
+				<a class="text-6xl link" href={`mailto:theo@capinski.dev`}> <Icon icon="mail"/>  </a>
+				<a class="text-6xl link" href="https://www.github.com/Namoop"> <Icon icon="github"/> </a>
 			</div>
 
 			<details class="flex w-full flex-col gap-2 [--w-date:1] [--w-name:2] [--w-link:4]" open>

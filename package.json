@@ -11,22 +11,22 @@
 		"lint": "eslint ."
 	},
 	"devDependencies": {
+		"@iconify-json/fa-brands": "^1.2.0",
+		"@iconify-json/fa6-regular": "^1.2.1",
+		"@iconify-json/fa6-solid": "^1.2.1",
+		"@iconify-json/uiw": "^1.2.1",
 		"@sveltejs/adapter-auto": "^3.2.5",
 		"@sveltejs/kit": "^2.7.1",
 		"@typescript-eslint/eslint-plugin": "^8.10.0",
 		"@typescript-eslint/parser": "^8.10.0",
 		"autoprefixer": "^10.4.20",
 		"eslint": "^9.13.0",
-		"eslint-plugin-svelte3": "^4.0.0",
 		"postcss": "^8.4.47",
 		"prettier": "^3.3.3",
 		"prettier-plugin-svelte": "^3.2.7",
-		"pug": "^3.0.3",
 		"svelte": "5.0.0",
 		"svelte-check": "^4.0.5",
-		"svelte-icons": "^2.1.0",
 		"svelte-preprocess": "^6.0.3",
-		"svelte-table": "^0.6.3",
 		"tailwindcss": "^3.4.14",
 		"tslib": "^2.8.0",
 		"typescript": "^5.6.3",
@@ -36,5 +36,7 @@
 	"dependencies": {
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
 		"pocketbase": "^0.21.5"
+		"pocketbase": "^0.21.5",
+		"unplugin-icons": "^0.20.1"
 	}
 }

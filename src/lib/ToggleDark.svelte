@@ -1,6 +1,5 @@
 <script lang="ts">
-	import FaLightbulb from "svelte-icons/fa/FaLightbulb.svelte";
-	import FaRegLightbulb from "svelte-icons/fa/FaRegLightbulb.svelte";
+	import Icon from '$lib/Icon.svelte';
 	import {onMount} from "svelte";
 
 	let { dark }: { dark: {dark_mode: boolean, last_preference: boolean}} = $props();
@@ -32,11 +31,11 @@
 	  style="background: radial-gradient(circle at center, var(--gradient-full), 80%, var(--gradient-gone))">
 	<button hidden id="toggleDarkMode" onclick={toggleColorScheme} aria-labelledby="toggleLabel">
 	</button>
-	<label id="toggleLabel" for="toggleDarkMode" class="block w-8 m-auto relative -bottom-5 -left-5">
+	<label id="toggleLabel" for="toggleDarkMode" class="block text-3xl m-auto relative -bottom-5 -left-5">
 		{#if dark.dark_mode}
-			<FaLightbulb />
+			<Icon icon="lightbulb" />
 		{:else}
-			<FaRegLightbulb />
+			<Icon icon="reg_lightbulb" />
 		{/if}
 		<span class="sr-only">Toggle Dark Mode</span>
 	</label>

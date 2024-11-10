@@ -49,8 +49,8 @@
 		}
 
 		editor.blur();
-		let html_editor = document.getElementsByClassName('ql-editor')[0];
-		let html_toolbar = document.getElementsByClassName('ql-toolbar')[0];
+		const html_editor = document.getElementsByClassName('ql-editor')[0];
+		const html_toolbar = document.getElementsByClassName('ql-toolbar')[0];
 		const show_editor = () => {
 			parent.classList.add('[border-color:#ccc]');
 			html_toolbar.classList.remove('opacity-0');
@@ -67,6 +67,11 @@
 		container.addEventListener('mouseenter', show_editor);
 		container.addEventListener('mouseleave', hide_editor);
 
+		// on editor contents change, add remove after:hidden class from save button
+		const save_button = document.getElementsByClassName('save')[0];
+		editor.on('text-change', () => {
+			save_button.classList.remove('after:hidden');
+		});
 
 	})
 
@@ -79,13 +84,22 @@
 			method: 'POST',
 			body: form
 		});
+
+		// on successful save, hide save button
+		if (response.ok) {
+			const save_button = document.getElementsByClassName('save')[0];
+			save_button.classList.add('after:hidden');
+		}
+		else {
+			console.error('Failed to save text. Time to panic.');
+		}
 	}
 
 </script>
 
 
 <component class="w-full" bind:this={container}>
-	<div role="toolbar" class="ql-toolbar ql-snow opacity-0 transition duration-300">
+	<div role="toolbar" class="ql-toolbar ql-snow opacity-0 transition duration-300 sticky top-16 bg-white dark:bg-stone-900 z-10">
 		<span class="ql-formats">
 			<button type="button" class="ql-bold" aria-pressed="false" aria-label="bold">
 				<svg
@@ -142,7 +156,7 @@
 			</button>
 		</span>
 		<span class="ql-formats">
-			<button type="button" class="ql-link text-[#444]" aria-pressed="false" aria-label="save" onclick={saveText}>
+			<button type="button" class="ql-link text-[#444] save after:hidden" aria-pressed="false" aria-label="save" onclick={saveText}>
 				<Icon icon="save"/>
 			</button>
 		</span>
@@ -158,6 +172,19 @@
         margin: 0.5rem;
         padding: 0
     }
+    :global(.dark .ql-formats button, .dark .ql-stroke) {
+        color: #ddd;
+		stroke: #ddd;
+    }
+	:global(.dark .ql-fill) {
+		fill: #ddd;
+	}
+
+	.save::after {
+		content: '*';
+		color: #b62828;
+	}
+
 
     :global(div.ql-container) {
         font-size: inherit;

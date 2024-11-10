@@ -6,6 +6,7 @@
 	// import projects from pagedata
 	import type {PageData} from "./$types";
 	import TextEditor from "$lib/TextEditor.svelte";
+	import DefaultBio from "$lib/DefaultBio.svelte";
 
 	let {data}: { data: PageData } = $props();
 	const {projects, dark: _dark, auth} = data;
@@ -26,11 +27,15 @@
 <div class="transition-colors duration-300 dark:bg-stone-900 {dark.dark_mode ? 'dark' : ''}">
 	<div class="content">
 		<main class="flex w-full flex-col items-center gap-5 p-5 dark:text-white">
+			<!--	TODO: fix favicon: make brim larger	-->
+
 			<ToggleDark dark={dark}/>
 
-			<img src="logo.svg" alt="logo" class="w-20"/>
+			<img src="logo.svg" alt="logo" class="w-20 -m-4"/>
 
-			<h1>capinski.dev</h1>
+			<div class="w-full sticky top-0 flex justify-center pb-4 pt-7 z-20 bg-white dark:bg-stone-900 transition duration-300">
+				<a href="https://capinski.dev"><h1>capinski.dev</h1></a>
+			</div>
 
 			{#if auth}
 				<TextEditor fill={text} />
@@ -39,34 +44,6 @@
 			<div bind:this={text}>
 				{@html data.text}
 			</div>
-
-<!--			<p bind:this={text}>-->
-<!--				&lt;!&ndash;	TODO: Make this editable (if authed) with a quill.js editor		&ndash;&gt;-->
-<!--				&lt;!&ndash;	TODO: fix favicon: make brim larger	&ndash;&gt;-->
-
-<!--				&emsp;-->
-<!--				Hi, I'm a UC Berkeley student studying math, physics, and history.-->
-<!--				I'm also a web developer, and I like to make games and tools in my free time.-->
-<!--				I started programming as a wee lad on Scratch, and I've been hooked ever since.-->
-
-<!--				<br><br>&emsp;-->
-<!--				Other than websites, I've worked with C++, Java/Kotlin, and Python, but-->
-<!--				<a href="https://svelte.dev" class="link">Svelte</a>-->
-<!--				is always the easiest to get ideas up and running-->
-<!--				quickly&mdash;for my attention span smaller than a lobotomized goldfish's, that's a big plus.-->
-<!--				I'm currently working on polishing some of my older stuff-->
-<!--				and/or figuring out how rust works.-->
-<!--				I'm always looking for new projects to-->
-<!--				<span class="line-through">procrastinate quantum mechanics problem sets</span>-->
-<!--				explore.-->
-
-<!--				<br><br>&emsp;-->
-<!--				Questions?-->
-<!--				<span class="italic">why?</span>-->
-<!--				Regardless, I can be reached at the social icons below!-->
-<!--				Response time is between now and the end of the universe.-->
-<!--			</p>-->
-
 
 			<details class="grid grid-cols-2 gap-3 sm:grid-cols-1 sm:gap-5" open>
 				<summary class="header">Info</summary>

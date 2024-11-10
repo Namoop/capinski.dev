@@ -178,7 +178,7 @@
 
 <style>
     :global(.ql-formats button) {
-        margin: 0.5rem;
+        margin: 0;
         padding: 0
     }
     :global(.dark .ql-formats button, .dark .ql-stroke) {
@@ -186,6 +186,28 @@
 		stroke: #ddd;
     }
 	:global(.dark .ql-fill) {
+		fill: #ddd;
+	}
+	:global(.ql-container .ql-container .ql-tooltip){
+		border: 1px solid #ccc;
+		background-color: #fff;
+	}
+	:global(.dark .ql-container .ql-container .ql-tooltip){
+		border: 1px solid #444;
+		background-color: #333;
+    }
+    :global(.ql-tooltip .ql-stroke){
+        color: #444;
+        stroke: #444;
+    }
+	:global(.ql-tooltip .ql-fill){
+		fill: #444;
+	}
+	:global(.dark .ql-tooltip .ql-stroke){
+		color: #ddd;
+		stroke: #ddd;
+	}
+	:global(.dark .ql-tooltip .ql-fill){
 		fill: #ddd;
 	}
 

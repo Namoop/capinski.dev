@@ -1,6 +1,6 @@
 // load projects list from pocketbase
 
-import type { PageServerLoad } from './$types'
+import type {Actions, PageServerLoad} from './$types'
 import PocketBase from 'pocketbase'
 
 /** A project type loaded from Pocketbase
@@ -41,8 +41,28 @@ export const load: PageServerLoad = async ({ params, cookies }) => {
 	let dark_mode = cookies.get('dark_mode') === 'true';
 	let last_preference = cookies.get('last_preference') === "true";
 
+	// fetch text from cookies for now // TODO: replace with database
+	const text = cookies.get('text') || ''
+	const auth = true //TODO: check if user is authenticated
+
 	return {
 		projects,
 		dark: {dark_mode, last_preference},
+		auth,
+		text,
 	}
 }
+
+export const actions = {
+	save: async (event) => {
+		const auth = true //TODO: check if user is authenticated
+		if (!auth) return {status: 401}
+
+		const data = await event.request.formData()
+		const text = data.get('text')?.toString() || ''
+
+		// save text to cookie for now // TODO: replace with database
+		event.cookies.set('text', text, {path: '/',})
+
+	}
+} satisfies Actions;

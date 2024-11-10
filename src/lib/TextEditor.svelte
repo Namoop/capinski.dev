@@ -6,9 +6,9 @@
 	import Icon from '$lib/Icon.svelte';
 
 	let editor: Quill, element: HTMLElement, parent: HTMLElement, container: HTMLElement;
-	const toolbarOptions = [['bold', 'italic', 'underline', 'strike'], [{header: '1'}, 'blockquote', 'code-block']];
+	const toolbarOptions = [['bold', 'italic', 'underline', 'strike'], ['link', {header: '1'}, 'blockquote', 'code-block']];
 	const modules = {
-		toolbar: toolbarOptions
+		toolbar: toolbarOptions[0].concat(['link'])
 	};
 
 	let {fill = null as HTMLElement | null} = $props();
@@ -36,7 +36,15 @@
 				button.addEventListener('click', () => {
 					switch (typeof format) {
 						case "string":
-							editor.format(format, !editor.getFormat()[format]);
+							switch (format) {
+								case "link":
+									const url = prompt('Enter the URL');
+									editor.format(format, url);
+									break;
+								default:
+									editor.format(format, !editor.getFormat()[format]);
+									break;
+							}
 							break;
 						case "object":
 							editor.format('header', editor.getFormat().header === format.header ? null : format.header);
@@ -134,8 +142,8 @@
 				</svg>
 			</button>
 		</span>
-		<span
-				class="ql-formats">
+		<span class="ql-formats">
+			<button type="button" class="ql-link" aria-pressed="false" aria-label="link"><svg viewBox="0 0 18 18"><line class="ql-stroke" x1="7" x2="11" y1="7" y2="11"></line><path class="ql-even ql-stroke" d="M8.9,4.577a3.476,3.476,0,0,1,.36,4.679A3.476,3.476,0,0,1,4.577,8.9C3.185,7.5,2.035,6.4,4.217,4.217S7.5,3.185,8.9,4.577Z"></path><path class="ql-even ql-stroke" d="M13.423,9.1a3.476,3.476,0,0,0-4.679-.36,3.476,3.476,0,0,0,.36,4.679c1.392,1.392,2.5,2.542,4.679.36S14.815,10.5,13.423,9.1Z"></path></svg></button>
 		<button type="button" class="ql-header" aria-pressed="false" value="1"
 				aria-label="header: 1"><svg viewBox="0 0 18 18"><path class="ql-fill"
 																	  d="M10,4V14a1,1,0,0,1-2,0V10H3v4a1,1,0,0,1-2,0V4A1,1,0,0,1,3,4V8H8V4a1,1,0,0,1,2,0Zm6.06787,9.209H14.98975V7.59863a.54085.54085,0,0,0-.605-.60547h-.62744a1.01119,1.01119,0,0,0-.748.29688L11.645,8.56641a.5435.5435,0,0,0-.022.8584l.28613.30762a.53861.53861,0,0,0,.84717.0332l.09912-.08789a1.2137,1.2137,0,0,0,.2417-.35254h.02246s-.01123.30859-.01123.60547V13.209H12.041a.54085.54085,0,0,0-.605.60547v.43945a.54085.54085,0,0,0,.605.60547h4.02686a.54085.54085,0,0,0,.605-.60547v-.43945A.54085.54085,0,0,0,16.06787,13.209Z"></path></svg></button><button

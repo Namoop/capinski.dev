@@ -6,7 +6,6 @@
 	// import projects from pagedata
 	import type {PageData} from "./$types";
 	import TextEditor from "$lib/TextEditor.svelte";
-	import DefaultBio from "$lib/DefaultBio.svelte";
 
 	let {data}: { data: PageData } = $props();
 	const {projects, dark: _dark, auth} = data;
@@ -27,7 +26,7 @@
 <div class="transition-colors duration-300 dark:bg-stone-900 {dark.dark_mode ? 'dark' : ''}">
 	<div class="content">
 		<main class="flex w-full flex-col items-center gap-5 p-5 dark:text-white">
-			<!--	TODO: fix favicon: make brim larger	-->
+			<!--	TODO: fix favicon: make brim larger or increase contrast	-->
 
 			<ToggleDark dark={dark}/>
 

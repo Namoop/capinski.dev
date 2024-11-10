@@ -84,9 +84,10 @@
 			method: 'POST',
 			body: form
 		});
+		console.log(response);
 
 		// on successful save, hide save button
-		if (response.ok) {
+		if (response.ok) { // TODO status not actually returning
 			const save_button = document.getElementsByClassName('save')[0];
 			save_button.classList.add('after:hidden');
 		}

@@ -90,5 +90,5 @@ async function auth_check(cookies: Cookies, url: URL, pb: PocketBase) {
 	} catch (e) {
 		return false;
 	}
-	return true
+	return pb.authStore.isValid;
 }

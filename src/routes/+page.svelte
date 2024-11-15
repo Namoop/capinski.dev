@@ -60,7 +60,6 @@
 
 			<div class="flex gap-8 justify-content">
 				<a class="text-6xl link" href="https://mathstodon.xyz/@capinski" rel="me"> <Icon icon="mastodon"/> </a>
-				<a class="text-6xl link" href="https://web.brid.gy/r/https://capinski.dev/>" rel="me"> <Icon icon="bluesky"/> </a>
 				<a class="text-6xl link" href={`mailto:theo@capinski.dev`}> <Icon icon="mail"/>  </a>
 				<a class="text-6xl link" href="https://www.github.com/Namoop"> <Icon icon="github"/> </a>
 			</div>

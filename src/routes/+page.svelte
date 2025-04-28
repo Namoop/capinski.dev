@@ -36,7 +36,7 @@
 			// server. Essentially, this is a hack that loads the main
 			// content div with the dark class to prevent a flash, but
 			// removes it after page load to prevent color overlap.
-		}, 100)
+		}, 500)
 	})
 </script>
 

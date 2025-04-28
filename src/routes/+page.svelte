@@ -50,7 +50,7 @@
 
 			<ToggleDark dark={dark}/>
 
-			<img src="logo.svg" alt="logo" class="w-20 -m-4"/>
+			<img src="logo.svg" alt="logo" class="h-[7.5rem] -m-4"/>
 
 			<div class="w-full sticky top-0 flex justify-center pb-4 pt-7 z-20 bg-white dark:bg-stone-900 transition duration-300">
 				<a href="https://capinski.dev"><h1>capinski.dev</h1></a>

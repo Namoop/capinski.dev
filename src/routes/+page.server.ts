@@ -38,10 +38,6 @@ export const load: PageServerLoad = async ({ params, cookies, url}) => {
 		return { id, name, built, link, preview: preview ? preview : link.match(/https:\/\/(.*)\//)?.[1] } as Project;
 	})
 
-	// fetch dark mode preferences from cookies
-	let dark_mode = cookies.get('dark_mode') === 'true';
-	let last_preference = cookies.get('last_preference') === "true";
-
 	// fetch text from pocketbase
 	let text;
 	try {
@@ -50,12 +46,11 @@ export const load: PageServerLoad = async ({ params, cookies, url}) => {
 		console.log(e);
 	}
 	const text2 = cookies.get('text') || '';
-	const auth = await auth_check(cookies, url, pb)
+	// const auth = await auth_check(cookies, url, pb)
 
 	return {
 		projects,
-		dark: {dark_mode, last_preference},
-		auth,
+		// auth,
 		text: text?.content || "ERROR: Page text not found",
 	}
 }

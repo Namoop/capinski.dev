@@ -20,17 +20,7 @@
         {text: "Current Occupation", detail: "student",},
         {text: "Sleep Schedule", detail: "student",},
     ]
-
-    let text: HTMLElement | null = $state(null);
 </script>
-
-{#if auth}
-    <TextEditor fill={text}/>
-{/if}
-
-<div bind:this={text}>
-    {@html data.text}
-</div>
 
 <details class="grid grid-cols-1 gap-5" open>
     <summary class="header">Info</summary>

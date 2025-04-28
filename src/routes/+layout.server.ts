@@ -2,7 +2,7 @@ import type {PageServerLoad} from "../../.svelte-kit/types/src/routes/$types";
 import type {Cookies} from "@sveltejs/kit";
 import PocketBase from "pocketbase";
 
-export const load: PageServerLoad = async ({ params, cookies, url})=> {
+export const load: PageServerLoad = async ({ params, cookies, url}: any)=> {
     // fetch dark mode preferences from cookies
     let dark_mode = cookies.get('dark_mode') === 'true';
     let last_preference = cookies.get('last_preference') === "true";

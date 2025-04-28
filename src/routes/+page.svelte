@@ -6,10 +6,12 @@
 	// import projects from pagedata
 	import type {PageData} from "./$types";
 	import TextEditor from "$lib/TextEditor.svelte";
+	import {onMount} from "svelte";
 
 	let {data}: { data: PageData } = $props();
 	const {projects, dark: _dark, auth} = data;
 	const dark = $state(_dark);
+	let container: HTMLElement;
 
 	const info = [
 		{text: "Theodore Capinski", detail: "he/him",},
@@ -21,9 +23,25 @@
 	]
 
 	let text: HTMLElement | null = $state(null);
+
+	onMount(() => {
+		setTimeout(() => {
+			document.body.parentElement!.classList.add('duration-300');
+			container.classList.remove('dark:bg-stone-900');
+			container.classList.remove('dark');
+			// This is so silly
+			// Basically: I want dark mode to be applied server side
+			// via cookies to prevent a flash of white. I need the HTML
+			// to have the `dark` class, but I can't access that on the
+			// server. Essentially, this is a hack that loads the main
+			// content div with the dark class to prevent a flash, but
+			// removes it after page load to prevent color overlap.
+		}, 100)
+	})
 </script>
 
-<div class="transition-colors duration-300 dark:bg-stone-900 {dark.dark_mode ? 'dark' : ''}">
+<div>
+<div bind:this={container} class="transition-colors {_dark.dark_mode ? 'dark dark:bg-stone-900' : ''}">
 	<div class="content">
 		<main class="flex w-full flex-col items-center gap-5 p-5 dark:text-white">
 			<!--	TODO: fix favicon: make brim larger or increase contrast	-->
@@ -46,10 +64,10 @@
 				{@html data.text}
 			</div>
 
-			<details class="grid grid-cols-2 gap-3 sm:grid-cols-1 sm:gap-5" open>
+			<details class="grid grid-cols-1 gap-5" open>
 				<summary class="header">Info</summary>
 				{#each info as a}
-					<p class="grid grid-cols-1 items-center text-center sm:grid-cols-2">
+					<p class="grid items-center text-center grid-cols-2">
 						<span class="p-0.5" style="padding-bottom: 0.2rem"> {a.text} </span>
 						<span><span class="rounded bg-gray-200 p-1 font-mono pb-0.5 dark:bg-gray-600"> {a.detail} </span></span>
 					</p>
@@ -85,6 +103,7 @@
 			<Signature scale={0.2}/>
 		</main>
 	</div>
+</div>
 </div>
 
 <style>

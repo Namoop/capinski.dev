@@ -19,10 +19,13 @@
 			dark.dark_mode = !event.matches;
 			toggleColorScheme()
 		});
+
+		document.body.parentElement!.classList.toggle('dark', dark.dark_mode);
 	});
 
 	function toggleColorScheme() {
 		dark.dark_mode = !dark.dark_mode;
+		document.body.parentElement!.classList.toggle('dark', dark.dark_mode);
 		document.cookie = `dark_mode=${dark.dark_mode}; path=/; max-age=31536000; samesite=strict`;
 	}
 </script>
@@ -40,24 +43,3 @@
 		<span class="sr-only">Toggle Dark Mode</span>
 	</label>
 </darkbutton>
-
-<style>
-	@property --gradient-full {
-		syntax: '<color>';
-		initial-value: #ffffff;
-		inherits: false;
-	}
-	@property --gradient-gone {
-		syntax: '<color>';
-		initial-value: #ffffff00;
-		inherits: false;
-	}
-	darkbutton {
-		transition: --gradient-full 0.25s, --gradient-gone 0.25s;
-	}
-
-	:global(.dark .dark_mode_gradient) {
-		--gradient-full: #1c1917;
-		--gradient-gone: #1c191700;
-	}
-</style>

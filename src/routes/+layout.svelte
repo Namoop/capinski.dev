@@ -3,6 +3,14 @@
     import ToggleDark from "$lib/ToggleDark.svelte";
     import {onMount} from "svelte";
     import type {PageData} from "../../.svelte-kit/types/src/routes/$types";
+    import { page } from '$app/state';
+
+
+    let nav_select = $derived({
+        "/about": -1,
+        "/": 0,
+        "/blog": 1,
+    }[page.url.pathname] ?? 0)
 
     let container: HTMLElement;
     onMount(() => {
@@ -37,10 +45,13 @@
 
             <img src="logo.svg" alt="logo" class="h-[7.5rem] -m-4"/>
 
-            <div class="w-full sticky top-0 flex justify-center items-end gap-5 pb-4 pt-7 z-20 bg-white dark:bg-stone-900 transition duration-300">
-                <a href="/about" class="leading-7">about</a>
+            <div class="w-full sticky top-0 grid grid-cols-3 justify-items-center items-end pb-4 pt-7 z-20 bg-white dark:bg-stone-900 transition duration-300">
+                <a href="/about" class="leading-7 underline decoration-[0.5px] block">about</a>
                 <a href="/"><h1>capinski.dev</h1></a>
-                <a href="/blog" class="leading-7">blog</a>
+                <a href="/blog"  class="leading-7 underline decoration-[0.5px]">blog</a>
+
+                <div id="highlight" class="absolute w-14 h-8 top-[40%] transition-all"
+                     style="margin-left: calc((66%) * {nav_select}); opacity: { Math.abs(nav_select)}; background: linear-gradient(to top, transparent 75%, transparent 65%, blue 120%);"></div>
             </div>
 
             {@render children()}

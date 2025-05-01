@@ -50,7 +50,7 @@
                 <a href="/"><h1>capinski.dev</h1></a>
                 <a href="/blog"  class="leading-7 underline decoration-[0.5px]">blog</a>
 
-                <div id="highlight" class="absolute w-14 h-8 top-[40%] transition-all"
+                <div id="highlight" class="absolute w-16 h-8 top-[40%] transition-all"
                      style="margin-left: calc((66%) * {nav_select}); opacity: { Math.abs(nav_select)}; background: linear-gradient(to top, transparent 75%, transparent 65%, blue 120%);"></div>
             </div>
 

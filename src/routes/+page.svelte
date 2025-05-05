@@ -10,7 +10,6 @@
 
     let {data}: { data: PageData } = $props();
     const {projects, dark: _dark, auth} = data;
-    const dark = $state(_dark);
 
     const info = [
         {text: "Theodore Capinski", detail: "he/him",},

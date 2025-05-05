@@ -5,6 +5,7 @@
 	import Lightbulb from '~icons/fa6-solid/lightbulb'
 	import RegLightbulb from '~icons/fa6-regular/lightbulb'
 	import Save from '~icons/material-symbols-light/save-rounded'
+	import Plus from '~icons/fa6-solid/plus'
 
 	const { icon="" } = $props()
 </script>
@@ -21,6 +22,8 @@
 	<RegLightbulb />
 {:else if icon === 'save'}
 	<Save />
+{:else if icon === 'plus'}
+	<Plus />
 {:else}
 <!---->
 {/if}

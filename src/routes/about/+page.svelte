@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import type {PageData} from "../../../.svelte-kit/types/src/routes/$types.js";
+    import type {PageData} from "../../../.svelte-kit/types/src/routes/about/$types.js";
     import TextEditor from "$lib/TextEditor.svelte";
     import Icon from "$lib/Icon.svelte";
 
@@ -15,9 +15,15 @@
     <TextEditor fill={text}/>
 {/if}
 
-<div bind:this={text}>
+<div bind:this={text} class="text-box">
     {@html data.text}
 </div>
+
+<style>
+    :global(.text-box a) {
+        text-decoration: underline;
+    }
+</style>
 
 <div class="flex gap-8 justify-content">
     <a class="text-6xl link" href="https://mathstodon.xyz/@capinski" rel="me">

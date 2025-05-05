@@ -2,7 +2,6 @@ import type {Actions, PageServerLoad} from "../../../.svelte-kit/types/src/route
 import PocketBase from "pocketbase";
 import type {Cookies} from "@sveltejs/kit";
 
-;
 
 export const load: PageServerLoad = async ({ params, cookies, url}: any) => {
     const pb = new PocketBase('https://pocketbase.capinski.dev');
@@ -14,7 +13,6 @@ export const load: PageServerLoad = async ({ params, cookies, url}: any) => {
     } catch (e) {
         console.log(e);
     }
-    const text2 = cookies.get('text') || '';
 
     return {
         text: text?.content || "ERROR: Page text not found",

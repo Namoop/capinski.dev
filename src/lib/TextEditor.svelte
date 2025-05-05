@@ -11,7 +11,7 @@
 		toolbar: toolbarOptions[0].concat(['link'])
 	};
 
-	let {fill = null as HTMLElement | null} = $props();
+	let {fill = null as HTMLElement | null, disabled = false} = $props();
 
 	onMount(async () => {
 		const module = await import('quill');
@@ -23,7 +23,10 @@
 		});
 		if (fill) {
 			editor.clipboard.dangerouslyPasteHTML(0, fill.innerHTML);
-			fill.remove()
+			fill.hidden = true;
+		}
+		if (disabled) {
+			editor.disable();
 		}
 
 		const toolbar = document.getElementsByClassName('ql-toolbar')[0].children;
@@ -79,6 +82,9 @@
 		const save_button = document.getElementsByClassName('save')[0];
 		editor.on('text-change', () => {
 			save_button.classList.remove('after:hidden');
+			window.onbeforeunload = function() {
+				return true;
+			};
 		});
 
 	})
@@ -98,6 +104,7 @@
 		if (response.ok) { // TODO status not actually returning
 			const save_button = document.getElementsByClassName('save')[0];
 			save_button.classList.add('after:hidden');
+			window.onbeforeunload = null;
 		}
 		else {
 			console.error('Failed to save text. Time to panic.');
@@ -107,7 +114,7 @@
 </script>
 
 
-<component class="w-full" bind:this={container}>
+<component class="-m-4 min-h-[50px]" style="min-width: 100%;" bind:this={container}>
 	<div role="toolbar" class="ql-toolbar ql-snow opacity-0 transition duration-300 sticky top-16 bg-white dark:bg-stone-900 z-10">
 		<span class="ql-formats">
 			<button type="button" class="ql-bold" aria-pressed="false" aria-label="bold">
@@ -214,6 +221,12 @@
 	.save::after {
 		content: '*';
 		color: #b62828;
+	}
+
+	:global(.ql-container .ql-editor) {
+		line-height: inherit;
+		min-height: 12rem;
+		outline: none;
 	}
 
 

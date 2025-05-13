@@ -20,7 +20,7 @@
 			theme: 'bubble',
 			modules,
 			placeholder: 'Compose an epic...',
-			formats: ['bold', 'italic', 'underline', 'strike', 'link', 'header', 'blockquote', 'code-block', 'list'],
+			formats: ['bold', 'italic', 'underline', 'strike', 'link', 'header', 'blockquote', 'code-block', 'list', 'image'], // TODO create menu item for images
 		});
 		if (fill) {
 			editor.clipboard.dangerouslyPasteHTML(0, fill.innerHTML);

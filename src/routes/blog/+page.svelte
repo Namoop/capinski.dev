@@ -28,7 +28,7 @@
 {#each blogs as blog, id}
     <div id="blog-card-{id}"
          class="{blog.published ? 'bg-white dark:bg-stone-800' : 'bg-gray-100 dark:bg-zinc-800'} rounded-lg flex flex-row shadow p-6 hover:shadow-lg transition-all duration-300 w-full min-h-48">
-        <a href="/blog/{blog.page}" class="w-36 mr-4 object-contain">
+        <a href="/blog/{blog.page}" class="w-48 mr-4 object-contain">
             <img src={blog.thumbnail} alt="Thumbnail" class="w-full h-full object-contain"/>
         </a>
         <div class="w-full">

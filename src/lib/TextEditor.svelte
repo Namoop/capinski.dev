@@ -1,7 +1,5 @@
 <script lang="ts">
 	import {onMount, onDestroy} from 'svelte';
-	import 'quill/dist/quill.bubble.css';
-	import 'quill/dist/quill.snow.css';
 	import type Quill from 'quill';
 	import Icon from '$lib/Icon.svelte';
 

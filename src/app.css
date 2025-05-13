@@ -1,3 +1,6 @@
+@import "quill/dist/quill.snow.css";
+@import "quill/dist/quill.bubble.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -43,14 +46,4 @@ button {
 	.header {
 		@apply text-2xl font-bold text-center;
 	}
-}
-
-ol{
-	@apply pl-6
-}
-li[data-list="bullet"] {
-	@apply list-disc 	list-inside;
-}
-li[data-list="number"] {
-	@apply list-decimal list-inside ;
 }

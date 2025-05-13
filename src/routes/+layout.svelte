@@ -24,6 +24,11 @@
             // server. Essentially, this is a hack that loads the main
             // content div with the dark class to prevent a flash, but
             // removes it after page load to prevent color overlap.
+
+            // Add classes to navbar
+            const navbar = document.getElementById("navbar")!;
+            navbar.classList.add("dark:bg-stone-900");
+            navbar.classList.add("bg-white");
         }, 500)
     })
 
@@ -44,12 +49,12 @@
 
             <img src="/logo.svg" alt="logo" class="h-[7.5rem] -m-4"/>
 
-            <div class="w-full sticky top-0 grid grid-cols-3 justify-items-center items-end pb-4 pt-7 z-20 bg-white dark:bg-stone-900 transition duration-300">
-                <a href="/about" class="leading-7 underline decoration-[0.5px] block">about</a>
+            <div id='navbar' class="w-full sticky top-0 grid grid-cols-3 justify-items-center items-end pb-4 pt-7 z-20 transition-all duration-300">
+                <a href="/about" class="leading-7 underline decoration-[0.5px] hover:underline-offset-4 {nav_select === -1 ? 'decoration-transparent' : ''}">about</a>
                 <a href="/"><h1>capinski.dev</h1></a>
-                <a href="/blog"  class="leading-7 underline decoration-[0.5px]">blog</a>
+                <a href="/blog"  class="leading-7 underline decoration-[0.5px] hover:underline-offset-4 {nav_select ===  1 ? 'decoration-transparent' : ''}">blog</a>
 
-                <div id="highlight" class="border-t-2 border-blue-800 absolute w-16 h-8 top-[40%] transition-all -z-10"
+                <div id="highlight" class="border-t-2 border-blue-800 absolute w-16 h-8 top-[40%] -z-10 rotate-180 duration-500"
                      style="margin-left: calc((66%) * {nav_select}); opacity: { Math.abs(nav_select)}; background: linear-gradient(to top, transparent 70%, lightblue 100%);"></div>
             </div>
 

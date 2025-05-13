@@ -82,10 +82,55 @@ export const actions = {
             return {status: 200}
         }
 
+        let pub_date = null;
+        // if publishing, set the published date
+        if (published) {
+            pub_date = new Date()
+        }
+
         //save settings to pocketbase
         try {
             const item = await pb.collection('pages').getFirstListItem(`page="${slug}"`)
-            await pb.collection('pages').update(item.id, {published, title, summary, page})
+            await pb.collection('pages').update(item.id, {published, title, summary, page, pub_date})
+        } catch (e) {
+            console.log(e)
+            return {status: 500}
+        }
+        return {status: 200}
+    },
+    upload: async ({request, url, cookies}) => {
+        const slug = url.pathname.split('/')[2] as string;
+
+        const pb = new PocketBase('https://pocketbase.capinski.dev');
+        const auth = await auth_check(cookies, url, pb)
+        if (!auth) return {status: 401}
+
+        const data = await request.formData()
+        const file = data.get('file') as File
+
+        //save file to pocketbase
+        let thumbnail = '';
+        try {
+            const item = await pb.collection('pages').getFirstListItem(`page="${slug}"`)
+            const new_item = await pb.collection('pages').update(item.id, {thumbnail: file})
+            thumbnail = pb.getFileUrl(new_item, new_item.thumbnail)
+        } catch (e) {
+            console.log(e)
+            return {status: 500}
+        }
+        return {status: 200, thumbnail}
+    },
+    delete: async ({request, url, cookies}) => {
+        const slug = url.pathname.split('/')[2] as string;
+
+        const pb = new PocketBase('https://pocketbase.capinski.dev');
+        const auth = await auth_check(cookies, url, pb)
+        if (!auth) return {status: 401}
+
+        //delete page from pocketbase
+        try {
+            const item = await pb.collection('pages').getFirstListItem(`page="${slug}"`)
+            await pb.collection('pages').delete(item.id)
         } catch (e) {
             console.log(e)
             return {status: 500}

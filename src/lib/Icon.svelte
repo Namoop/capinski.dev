@@ -6,6 +6,7 @@
 	import RegLightbulb from '~icons/fa6-regular/lightbulb'
 	import Save from '~icons/material-symbols-light/save-rounded'
 	import Plus from '~icons/fa6-solid/plus'
+	import Upload from '~icons/material-symbols/upload-rounded'
 
 	const { icon="" } = $props()
 </script>
@@ -24,6 +25,8 @@
 	<Save />
 {:else if icon === 'plus'}
 	<Plus />
+{:else if icon === 'upload'}
+	<Upload />
 {:else}
 <!---->
 {/if}

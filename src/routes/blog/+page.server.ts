@@ -7,21 +7,20 @@ export const load: PageServerLoad = async ({ params, cookies, url}: any) => {
 
     const pb = new PocketBase('https://pocketbase.capinski.dev');
     const auth = await auth_check(cookies, url, pb)
+    const EXCLUDE_PAGES = ['home', 'new'] // TODO refactor pages into separate collection
 
     // fetch blogs from pocketbase
-    // fetch "summary" field and "thumbnail" field and "page" field
     let blogs;
     try {
         blogs = await pb.collection('pages').getFullList({
             sort: '-pub_date',
-            filter: auth ? '' : 'published=true' + ' && page!="home" && page!="new"',
+            filter: (auth ? '' : 'published=true && ') + EXCLUDE_PAGES.map(page => `page!="${page}"`).join(' && '),
             expand: 'thumbnail',
         });
     } catch (e) {
         console.log(e);
         return {status: 500};
     }
-    console.log(Date.now().toLocaleString(), blogs.length)
 
     // convert created datetime to "Jan 2022" format
     blogs.forEach((blog) => {

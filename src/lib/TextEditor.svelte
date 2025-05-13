@@ -20,6 +20,7 @@
 			theme: 'bubble',
 			modules,
 			placeholder: 'Compose an epic...',
+			formats: ['bold', 'italic', 'underline', 'strike', 'link', 'header', 'blockquote', 'code-block'],
 		});
 		if (fill) {
 			editor.clipboard.dangerouslyPasteHTML(0, fill.innerHTML);
@@ -91,7 +92,7 @@
 
 	// save button
 	async function saveText() {
-		const text = editor.root.innerHTML;
+		const text = editor.root.innerHTML
 		const form = new FormData();
 		form.append('text', text);
 		const response = await fetch('?/save', {

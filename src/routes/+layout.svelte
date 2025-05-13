@@ -43,7 +43,6 @@
         <main class="flex w-full flex-col items-center gap-5 p-5 dark:text-white">
             <!--	TODO: fix favicon: make brim larger or increase contrast	-->
             <!--	TODO: fix links from text editor by adding referrer and class link	-->
-            <!--	TODO: fix margin on unsaved changes icon	-->
 
             <ToggleDark dark={dark}/>
 

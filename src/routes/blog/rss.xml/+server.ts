@@ -1,6 +1,4 @@
-import type {Actions, PageServerLoad} from "../../../../.svelte-kit/types/src/routes/$types";
 import PocketBase from "pocketbase";
-import type {Cookies} from "@sveltejs/kit";
 export const prerender = true;
 
 export async function GET() {
@@ -29,11 +27,12 @@ export async function GET() {
     const xml = `<?xml version="1.0" encoding="UTF-8" ?>
 	<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-	    <title>Capinski.Dev</title>
+	    <title>capinski.dev</title>
 	    <description>With great power comes high-voltage physics shenanigans and a surge of current procrastination.</description>
 	    <link>https://www.capinski.dev/</link>
 	    <atom:link href="https://www.capinski.dev/blog/rss.xml" rel="self" type="application/rss+xml"/>
 	    <language>en</language>
+	    <enclosure url="https://www.capinski.dev/favicon.png" type="image/png" />
 	    ${blogs
         .map(
             (post) => `

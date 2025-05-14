@@ -44,6 +44,7 @@
 		"@tiptap/starter-kit": "^2.9.1",
 		"pocketbase": "^0.21.5",
 		"quill": "^2.0.2",
+		"sass": "^1.88.0",
 		"svelte-editorjs": "^0.1.0",
 		"unplugin-icons": "^0.20.1"
 	}

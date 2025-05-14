@@ -1,5 +1,5 @@
 <script lang="ts">
-    import "../app.css";
+    import "../app.scss";
     import ToggleDark from "$lib/ToggleDark.svelte";
     import {onMount} from "svelte";
     import type {PageData} from "../../.svelte-kit/types/src/routes/$types";
@@ -59,6 +59,18 @@
 
             {@render children()}
 
+
+            <div class="flex flex-row items-center justify-center gap-6 mt-6">
+                <a href="/" class="opacity-50 hover:underline font-italic font-medium">
+                    Home
+                </a>
+                <a href="https://github.com/Namoop" class="opacity-50 hover:underline font-italic font-medium">
+                    GitHub
+                </a>
+                <a href="/blog/rss.xml" class="opacity-50 hover:underline font-italic font-medium">
+                    RSS Feed
+                </a>
+            </div>
         </main>
     </div>
 </div>

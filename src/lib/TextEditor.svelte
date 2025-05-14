@@ -11,14 +11,22 @@
 
 	let {fill = null as HTMLElement | null, disabled = false} = $props();
 
+	$effect(() => {
+		if (disabled) {
+			editor?.disable();
+		} else {
+			editor?.enable();
+		}
+	});
+
 	onMount(async () => {
 		const module = await import('quill');
 		const Quill = module.default;
 		editor = new Quill(element, {
 			theme: 'bubble',
 			modules,
-			placeholder: 'Compose an epic...',
-			formats: ['bold', 'italic', 'underline', 'strike', 'link', 'header', 'blockquote', 'code-block', 'list', 'image'], // TODO create menu item for images
+			placeholder: 'Set the slug before editing...',
+			// formats: ['bold', 'italic', 'underline', 'strike', 'link', 'header', 'blockquote', 'code-block', 'list', 'image'], // TODO create menu item for images
 		});
 		if (fill) {
 			editor.clipboard.dangerouslyPasteHTML(0, fill.innerHTML);
@@ -114,7 +122,7 @@
 
 
 <component class="-m-4 min-h-[50px]" style="min-width: 100%;" bind:this={container}>
-	<div role="toolbar" class="ql-toolbar ql-snow opacity-0 transition duration-300 sticky top-16 bg-white dark:bg-stone-900 z-10">
+	<div role="toolbar" class="ql-toolbar ql-snow opacity-0 transition duration-300 sticky top-20 bg-white dark:bg-stone-900 z-10">
 		<span class="ql-formats">
 			<button type="button" class="ql-bold" aria-pressed="false" aria-label="bold">
 				<svg

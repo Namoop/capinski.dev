@@ -15,6 +15,7 @@
     let summary = $state(text.summary) as string;
     let published = $state(text.published) as boolean;
     let slug = $state(text.page) as string;
+    let disabled = $derived(slug === "new")
 
     async function saveSettings() {
         if (slug === "new") return;
@@ -198,9 +199,11 @@
 
 
 {#if auth}
-    <TextEditor fill={textEl} disabled={slug === "new"}/>
+    <TextEditor fill={textEl} {disabled}/>
 {/if}
 
-<div bind:this={textEl} class="prose prose-lg min-h-72">
-    {@html text.content}
+<div class="prose prose-lg min-h-72 ql-bubble w-full">
+    <div bind:this={textEl} class="ql-editor">
+        {@html text.content}
+    </div>
 </div>

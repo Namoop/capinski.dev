@@ -17,8 +17,12 @@
     let slug = $state(text.page) as string;
     let disabled = $derived(slug === "new")
 
+    function randomFourCharacters() {
+        return Math.random().toString(36).substring(2, 6);
+    }
+
     async function saveSettings() {
-        if (slug === "new") return;
+        if (slug === "new") slug = `post-${randomFourCharacters()}`;
         const form = new FormData();
         form.append('title', title);
         form.append('summary', summary);
@@ -64,7 +68,8 @@
     }
 
     async function thumbnailUpload(e: Event) {
-            const file = (e.target as HTMLFormElement).files[0] as File;
+        await saveSettings()
+        const file = (e?.target as HTMLFormElement).files[0] as File || '';
             const form = new FormData();
             form.append('file', file);
             const response = await fetch('?/upload', {
@@ -94,7 +99,7 @@
     }
 </script>
 
-<div class="w-3/4 h-full border flex items-center justify-center mb-6 p-4 border-gray-200 dark:border-gray-600 hover:shadow-lg transition-all duration-300 rounded-lg relative group">
+<div class="w-3/4 h-full border flex items-center justify-center mb-6 p-4 border-gray-200 dark:border-gray-600 hover:shadow-lg transition-all duration-300 rounded-lg relative group {(auth && !text.thumbnail) ? 'bg-gray-200 hover:bg-gray-300 dark:bg-zinc-800 dark:hover:bg-zinc-700' : ''}">
     {#if auth}
         <input
                 type="file"
@@ -105,12 +110,28 @@
         <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 duration-300 text-2xl">
             <Icon icon="upload" />
         </div>
+        <button class="absolute top-2 left-2 opacity-0 group-hover:opacity-100 duration-300 text-2xl text-red-500 cursor-pointer p-0"
+             onclick={() => {
+                 if (window.confirm('Are you sure you want to remove the thumbnail?')) {
+                     text.thumbnail = '';
+                     thumbnailUpload();
+                 }
+             }}>
+            <Icon icon="close" />
+        </button>
     {/if}
-    <img
+    {#if text.thumbnail}
+        <img
             src={text.thumbnail}
-            alt="Thumbnail"
+            alt="Thumbnail failed to load"
             class="h-56 object-contain rounded-lg"
-    />
+        />
+    {:else if auth}
+        <div class="h-56 text-8xl flex items-center">
+            <Icon icon="upload"/>
+        </div>
+    {/if}
+
 </div>
 <h1 class="text-4xl font-bold">
     {#if auth}

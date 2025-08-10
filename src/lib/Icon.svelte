@@ -7,6 +7,7 @@
 	import Save from '~icons/material-symbols-light/save-rounded'
 	import Plus from '~icons/fa6-solid/plus'
 	import Upload from '~icons/material-symbols/upload-rounded'
+	import Close from '~icons/material-symbols/close'
 
 	const { icon="" } = $props()
 </script>
@@ -27,6 +28,8 @@
 	<Plus />
 {:else if icon === 'upload'}
 	<Upload />
+{:else if icon === 'close'}
+	<Close />
 {:else}
 <!---->
 {/if}
